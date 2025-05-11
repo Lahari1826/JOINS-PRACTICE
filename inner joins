@@ -1,0 +1,53 @@
+mysql> create database pen;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use pen;
+Database changed
+mysql> -- Create Employees table
+mysql> CREATE TABLE Employees (
+    ->     EmpID INT PRIMARY KEY,
+    ->     EmpName VARCHAR(50),
+    ->     DeptID INT
+    -> );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql>
+mysql> -- Create Departments table
+mysql> CREATE TABLE Departments (
+    ->     DeptID INT PRIMARY KEY,
+    ->     DeptName VARCHAR(50)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> -- Insert into Employees
+mysql> INSERT INTO Employees (EmpID, EmpName, DeptID) VALUES
+    -> (1, 'Alice', 10),
+    -> (2, 'Bob', 20),
+    -> (3, 'Charlie', 30),
+    -> (4, 'David', NULL),
+    -> (5, 'Eve', 40);
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> -- Insert into Departments
+mysql> INSERT INTO Departments (DeptID, DeptName) VALUES
+    -> (10, 'HR'),
+    -> (20, 'IT'),
+    -> (30, 'Finance'),
+    -> (50, 'Marketing');
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> -- Returns only matching records
+mysql> SELECT E.EmpID, E.EmpName, D.DeptName
+    -> FROM Employees E
+    -> INNER JOIN Departments D ON E.DeptID = D.DeptID;
++-------+---------+----------+
+| EmpID | EmpName | DeptName |
++-------+---------+----------+
+|     1 | Alice   | HR       |
+|     2 | Bob     | IT       |
+|     3 | Charlie | Finance  |
++-------+---------+----------+
+3 rows in set (0.01 sec)
