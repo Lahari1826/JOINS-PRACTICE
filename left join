@@ -1,0 +1,14 @@
+mysql> -- Returns all employees, matched or not
+mysql> SELECT E.EmpID, E.EmpName, D.DeptName
+    -> FROM Employees E
+    -> LEFT JOIN Departments D ON E.DeptID = D.DeptID;
++-------+---------+----------+
+| EmpID | EmpName | DeptName |
++-------+---------+----------+
+|     1 | Alice   | HR       |
+|     2 | Bob     | IT       |
+|     3 | Charlie | Finance  |
+|     4 | David   | NULL     |
+|     5 | Eve     | NULL     |
++-------+---------+----------+
+5 rows in set (0.00 sec)
