@@ -1,0 +1,21 @@
+mysql> -- Simulating FULL OUTER JOIN in MySQL
+mysql> SELECT E.EmpID, E.EmpName, D.DeptName
+    -> FROM Employees E
+    -> LEFT JOIN Departments D ON E.DeptID = D.DeptID
+    ->
+    -> UNION
+    ->
+    -> SELECT E.EmpID, E.EmpName, D.DeptName
+    -> FROM Employees E
+    -> RIGHT JOIN Departments D ON E.DeptID = D.DeptID;
++-------+---------+-----------+
+| EmpID | EmpName | DeptName  |
++-------+---------+-----------+
+|     1 | Alice   | HR        |
+|     2 | Bob     | IT        |
+|     3 | Charlie | Finance   |
+|     4 | David   | NULL      |
+|     5 | Eve     | NULL      |
+|  NULL | NULL    | Marketing |
++-------+---------+-----------+
+6 rows in set (0.01 sec)
